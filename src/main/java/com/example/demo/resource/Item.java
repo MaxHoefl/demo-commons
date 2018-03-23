@@ -34,11 +34,14 @@ public class Item
 	@Column(name="itemname")
 	private String itemName;
 
-    @ManyToOne
-    @JoinColumn(name = "cartid", nullable=false)
-    @JsonBackReference
-    private Cart cart;
-
+//    @ManyToOne
+//    @JoinColumn(name = "cartid", nullable=false)
+//    @JsonBackReference
+//    private Cart cart;
+	@Column(name="cartid")
+	private Long cartId;
+	
+	
     public Item() {
     }
 
@@ -58,13 +61,21 @@ public class Item
 		this.itemName = itemName;
 	}
 
-	public Cart getCart() {
-		return cart;
+//	public Cart getCart() {
+//		return cart;
+//	}
+//
+//	public void setCart(Cart cart) {
+//		this.cart = cart;
+//	}
+	public Long getCartId() {
+		return cartId;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setCartId(Long cartId) {
+		this.cartId = cartId;
 	}
+	
 
 	@Override
 	public String toString() {

@@ -3,11 +3,13 @@ package com.example.demo.resource;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -26,10 +28,13 @@ public class Cart
     @Column(name = "cartid", nullable=false)
     private long id;
 	
-	@Column(name="items")
-    @OneToMany(mappedBy = "cart")
-	@JsonManagedReference
-    private Set<Item> items;
+//	@Column(name="items")
+//    @OneToMany(mappedBy = "cart")
+//	@JsonManagedReference
+//    private Set<Item> items;
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name="cartid", referencedColumnName="cartid")
+	private Set<Item> items;
 
     public Cart() {}
     
